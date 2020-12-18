@@ -1,4 +1,5 @@
 #include<iostream>
+#include<conio.h>
 #include<vector>
 
 using namespace std;
@@ -6,26 +7,34 @@ using namespace std;
 int main()
 {
     vector<int> arr;
-    int temp, i, j, k = 4;
+    int temp, i, j;
     long n;
     vector<int> atemp;
-    for(int i = 0; i<5; i++)
+    while(true)
     {
         cin>>temp;
+        if(temp == -1)
+        {
+            break;
+        }
         arr.push_back(temp);
     }
+
     cout<<"The entered array is : \n";
-    for(i = 0; i<=4; i++)
+    int l = arr.size();
+    int k = l-1;
+    for(i = 0; i<l; i++)
     {
         cout<<arr[i]<<'\t';
     }
-    cout<<"Enter the number of rotations you want : ";
+    cout<<"\n\nEnter the number of rotations you want : ";
     cin>>n;
-    for(i = 5-n; i<5; i++)
+    n = n%l;
+    for(i = l-n; i<l; i++)
     {
         atemp.push_back(arr[i]);
     }
-    for(i = 5-n-1; i>=0; i--)
+    for(i = l-n-1; i>=0; i--)
     {
         arr[k--] = arr[i];
     }
@@ -33,9 +42,11 @@ int main()
     {
         arr[i] = atemp[i];
     }
-    cout<<"The rotated Array is : \n";
-    for(i = 0; i<=4; i++)
+    cout<<"\n\nThe rotated Array is : \n";
+    for(i = 0; i<l; i++)
     {
         cout<<arr[i]<<'\t';
     }
+    getch();
+    return 0;
 }
